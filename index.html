@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>POM Revision Quiz</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f3ec;--cd:#fff;--ink:#1d2433;--mu:#6b7280;--ac:#b4560b;--ok:#157a4a;--no:#b42318;--ln:#e3ddd0;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12151c;--cd:#1b2030;--ink:#eceef3;--mu:#9aa3b5;--ac:#f0a35e;--ok:#4ade80;--no:#f87171;--ln:#2c3347;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#12151c;--cd:#1b2030;--ink:#eceef3;--mu:#9aa3b5;--ac:#f0a35e;--ok:#4ade80;--no:#f87171;--ln:#2c3347;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Cairo,"Segoe UI",Tahoma,sans-serif;line-height:1.7}
+main{max-width:680px;margin:0 auto;padding:20px 16px 48px}
+h1{font-size:26px;font-weight:800;margin:8px 0 2px}
+.sub{color:var(--mu);margin:0 0 18px}
+.card{background:var(--cd);border:1px solid var(--ln);border-radius:16px;padding:18px;animation:up .35s ease}
+@keyframes up{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.grp{margin:14px 0 4px;font-weight:600;font-size:14px;color:var(--mu)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:inherit;border:1px solid var(--ln);background:transparent;color:var(--ink);padding:6px 14px;border-radius:99px;cursor:pointer;transition:.15s}
+.chip.on{background:var(--ac);border-color:var(--ac);color:#fff}
+.go{font:inherit;font-weight:800;width:100%;margin-top:20px;padding:13px;border:0;border-radius:12px;background:var(--ac);color:#fff;cursor:pointer;font-size:17px}
+.go:disabled{opacity:.4;cursor:not-allowed}
+.ghost{background:transparent;color:var(--ac);border:2px solid var(--ac);margin-top:10px}
+.bar{height:6px;background:var(--ln);border-radius:9px;overflow:hidden;margin-bottom:10px}
+.bar i{display:block;height:100%;background:var(--ac);transition:width .4s}
+.meta{display:flex;justify-content:space-between;color:var(--mu);font-size:14px;margin-bottom:10px}
+.q{font-size:18px;font-weight:600;margin:0 0 14px;text-align:left;direction:ltr}
+.o{display:block;width:100%;text-align:left;direction:ltr;font:inherit;padding:11px 14px;margin:8px 0;border:1.5px solid var(--ln);background:transparent;color:var(--ink);border-radius:12px;cursor:pointer;transition:.15s}
+.o:hover:not(:disabled){border-color:var(--ac)}
+.o.ok{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 15%,transparent)}
+.o.no{border-color:var(--no);background:color-mix(in srgb,var(--no) 15%,transparent);animation:shake .35s}
+.tg{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.fb{margin-top:14px;padding:12px 14px;border-radius:12px;border-inline-start:4px solid var(--ac);background:color-mix(in srgb,var(--ac) 10%,transparent);animation:up .3s}
+.fb b{display:block;margin-bottom:2px}
+.big{font-size:52px;font-weight:800;text-align:center;color:var(--ac);margin:4px 0}
+.rv{border-top:1px solid var(--ln);padding:12px 0;font-size:15px}
+.rv p{margin:0 0 4px;direction:ltr;text-align:left;font-weight:600}
+.rv span{color:var(--mu)}
+</style></head><body><main id="app"></main>
+<script>
+const T=['True','False'];
+const Q=(c,t,d,q,o,a,h)=>({c,t,d,q,o,a,h});
+const D=[
+// Chapter 1
+Q(1,'m',1,'The part of a business organization responsible for producing goods or services is:',['Marketing','Operations','Finance','Accounting'],1,'Operations = اللي بينتج. Marketing بيسوّق وFinance بيمول.'),
+Q(1,'m',1,'Which of the following is NOT a service?',['Air travel','Education','Computer','Haircut'],2,'الخدمة نشاط (قص شعر، تعليم، سفر). الكمبيوتر حاجة بتلمسها = Goods.'),
+Q(1,'m',1,'Which is NOT an input to the transformation process?',['Land','Labor','Capital','Process'],3,'Inputs = Land, Labor, Capital, Information. الـ Process هي التحويل نفسه مش مدخل.'),
+Q(1,'m',2,'Comparing feedback against standards to decide if corrective action is needed is called:',['Feedback','Control','Value added','Forecasting'],1,'Feedback = قياس بس. Control = مقارنة بالمعيار + تصحيح.'),
+Q(1,'m',2,'Which sequence matches the bread supply chain?',['Farm → Mill → Bakery → Supermarket','Mill → Farm → Supermarket → Bakery','Bakery → Mill → Farm → Supermarket','Supermarket → Bakery → Mill → Farm'],0,'تخيل الرغيف من الأرض لحد إيدك: قمح ← طحن ← خبز ← بيع.'),
+Q(1,'m',2,'Which source of variation has identifiable causes and can be reduced by corrective action?',['Random variation','Assignable variation','Structural variation','Variety'],1,'Assignable = ليها سبب فتتعالج. Random = طبيعية ومحدش يقدر يغيرها.'),
+Q(1,'m',2,'Supply < Demand leads to:',['Wasteful excess capacity','Lost opportunity and customer dissatisfaction','The ideal situation','Lower costs'],1,'العرض أقل = تخسر فرصة والعميل يزعل. العرض أكتر = إهدار. المثالي: يتساووا.'),
+Q(1,'m',2,'Facility location and system capacity are examples of:',['System design decisions','System operation decisions','Scheduling decisions','Quality assurance'],0,'Design = استراتيجي وطويل المدى. Operation = تشغيل يومي (جدولة، مخزون، جودة).'),
+Q(1,'m',1,'“A few factors account for a high percentage of occurrences” describes:',['Pareto phenomenon','Agility','Lean systems','Outsourcing'],0,'Pareto = قاعدة القلة الحرجة: ركّز على القليل اللي أثره كبير.'),
+Q(1,'t',1,'Operations, marketing, and finance function independently of each other in most organizations.',T,1,'الوظايف التلاتة بتدعم بعض، مش مستقلة.'),
+Q(1,'t',2,'Operations managers spend less time on system operation decisions than on any other decision area.',T,1,'العكس: بيقضوا وقت أكتر على قرارات التشغيل.'),
+Q(1,'t',2,'Variations cannot be disruptive to operations and supply chain processes.',T,1,'ممكن تسبب تأخير وجودة وحشة وتكلفة، فمش "cannot".'),
+Q(1,'c',1,'Dept A produces 120 parts/day and Dept B uses 45 parts/day. Inventory buildup rate?',['45','75','165','2.67'],1,'Buildup = Production − Usage = 120 − 45.'),
+Q(1,'c',2,'Production is 40/day and usage is 65/day. What happens?',['Buildup +25/day','Buildup 0','Buildup −25/day, eventually a stockout','Buildup −65/day'],2,'الإشارة السالبة = المخزون بينزل لحد الصفر = stockout.'),
+Q(1,'c',2,'Annual demand 640 units, ordering cost $25, holding cost $5/unit/year. EOQ?',['64','80','160','128'],1,'Q = √(2DS ÷ H) = √(2×640×25 ÷ 5) = √6,400.'),
+Q(1,'c',3,'Annual demand 3,000 bags, S = $40, H = $4. EOQ (rounded)?',['245','300','60','350'],0,'2×3000×40 = 240,000 ÷ 4 = 60,000 ← جذرها ≈ 245.'),
+Q(1,'m',1,'If a company orders too often, which cost piles up?',['Holding cost','Ordering cost','Demand','Production'],1,'طلبات كتير = ordering cost. كمية كبيرة كل مرة = holding cost.'),
+// Chapter 2
+Q(2,'m',1,'A mission statement should answer:',['How much profit do we want?','Who are our competitors?','What business are we in?','Which tactics should we use?'],2,'Mission = سبب وجود الشركة: إحنا شغالين في إيه؟'),
+Q(2,'m',2,'The planning hierarchy from top to bottom is:',['Mission, goals, organizational strategies, functional strategies, tactics','Goals, mission, organizational strategies, tactics, functional strategies','Mission, goals, functional strategies, organizational strategies, tactics','Tactics, functional strategies, organizational strategies, goals, mission'],0,'من فوق لتحت: الرسالة ← الأهداف ← استراتيجية المنظمة ← استراتيجية الوظائف ← التكتيكات.'),
+Q(2,'m',1,'Which is an EXTERNAL factor in strategy formulation?',['Employees’ skills','Production capacity','Government regulations','Operating efficiency'],2,'Internal = جوا الشركة. External = بره: عملاء، منافسين، حكومة، اقتصاد، موردين.'),
+Q(2,'m',2,'In a SWOT analysis, managers use opportunities to:',['Use existing advantages','Identify areas to improve','Find ways to expand sales or introduce new products','Reduce risks'],2,'S = استغل، W = حسّن، O = وسّع، T = احمي.'),
+Q(2,'m',2,'The organizational strategy “Low Price” is supported by which operations strategy?',['Innovation','Low cost','Superior customer service','Flexibility'],1,'Low price ← Low cost. Service ← Superior service. Newness ← Innovation.'),
+Q(2,'t',1,'Functional-level strategies relate to the entire organization.',T,1,'اللي بيغطي المنظمة كلها = Organizational strategy. الـ Functional لكل وظيفة لوحدها.'),
+Q(2,'t',2,'Pricing, quality, advertising and promotion are operations decisions, not marketing.',T,1,'دي كلها Marketing influences.'),
+Q(2,'t',2,'Employees’ skills and financial resources are external factors.',T,1,'دول Internal: مهارات الموظفين والموارد المالية جوا الشركة.'),
+Q(2,'c',3,'5,000 units at $30; labor 500 h at $25; materials $5,000; overhead = 2 × labor cost. Multifactor productivity?',['2.35','3.53','4.80','1.20'],1,'المخرجات = 150,000. المدخلات = 12,500 + 5,000 + 25,000 = 42,500. النتيجة 3.5294.'),
+Q(2,'c',2,'Labor productivity fell from 25 to 23 units/hour. Productivity growth?',['+8%','−8%','−2%','+2%'],1,'(الجديد − القديم) ÷ القديم × 100 = (23−25) ÷ 25.'),
+Q(2,'c',2,'Canvalves: output rises from 800 to 1,200 valves per shift. Productivity increase?',['50%','33%','25%','67%'],0,'(1200−800) ÷ 800 = 50%. ⚠️ السلايد في السكشن مكتوب فيه C بس الحل الصح 50%.'),
+Q(2,'c',2,'A country’s productivity goes from 77 to 82. Growth rate?',['6.1%','8.7%','5.3%','6.5%'],3,'(82−77) ÷ 77 = 6.49% ≈ 6.5.'),
+// Chapter 3
+Q(3,'m',1,'Using the latest observation to forecast the next period is:',['Moving average','Naive forecast','Exponential smoothing','Regression'],1,'Naive = آخر قيمة هي توقع الفترة الجاية.'),
+Q(3,'m',2,'Which is a feature common to all forecasts?',['They are perfect','Individual items are forecast more accurately than groups','Accuracy decreases as the horizon increases','Accuracy increases as the horizon increases'],2,'كل ما بعدت في المستقبل قلت الدقة. وتوقع المجموعات أدق من الأفراد.'),
+Q(3,'m',2,'An iterative qualitative method that aims at consensus is:',['Delphi method','Naive forecast','Linear trend','MAD'],0,'Delphi = جولات من آراء الخبراء لحد ما يتفقوا.'),
+Q(3,'m',2,'Wavelike variations lasting more than one year are:',['Seasonality','Cycles','Irregular variation','Random variation'],1,'Seasonality = موسمي قصير ومنتظم. Cycle = أكتر من سنة.'),
+Q(3,'t',2,'A moving average is more responsive when more data points are included.',T,1,'العكس: نقط أقل = أسرع استجابة، نقط أكتر = أنعم وأبطأ.'),
+Q(3,'t',2,'The naive forecast is limited to series with no trend or seasonality.',T,1,'ينفع مع trend وseasonality كمان.'),
+Q(3,'t',2,'Time-series techniques assume future values will duplicate past values.',T,1,'بيفترضوا النمط السببي هيستمر، مش إن القيم هتتكرر نسخ.'),
+Q(3,'c',1,'3-week moving average of demand 1,310, 1,280 and 1,340?',['1,310','1,280','1,340','1,250'],0,'(1310+1280+1340) ÷ 3 = 3,930 ÷ 3. وسبت الأسبوع الأول لأنه أقدم.'),
+Q(3,'c',2,'Weighted MA: last month 1,200 (0.6), 2 months ago 1,100 (0.3), 3 months ago 1,000 (0.1)?',['1,100','1,150','1,200','1,120'],1,'720 + 330 + 100 = 1,150. والأوزان مجموعها 1.'),
+Q(3,'c',2,'Exponential smoothing: previous forecast 1,200, actual 1,150, α = 0.40. New forecast?',['1,170','1,180','1,220','1,190'],1,'1200 + 0.4 × (1150 − 1200) = 1200 − 20.'),
+Q(3,'c',2,'Linear trend: 1,000 at period 0, falling 25 per period. Forecast for period 8?',['800','1,200','975','900'],0,'1000 + (−25 × 8) = 800.'),
+Q(3,'c',3,'Actual/forecast: 100/90, 120/130, 80/70. MAD and MSE (course formula, n−1)?',['MAD 10, MSE 150','MAD 10, MSE 100','MAD 30, MSE 300','MAD 0, MSE 0'],0,'كل |error| = 10 ← MAD = 30÷3. MSE = 300 ÷ (3−1) = 150. الدكتورة بتقسم على n−1.'),
+Q(3,'c',3,'Four days with errors −30, 20, 50, −20. MAD?',['30','25','120','10'],0,'خد القيم المطلقة: 30+20+50+20 = 120 ÷ 4 = 30.'),
+// Chapter 4
+Q(4,'m',1,'Cradle-to-grave assessment is also known as:',['Value analysis','Life cycle analysis','Reverse engineering','Remanufacturing'],1,'من المهد للّحد = LCA: تأثير المنتج على البيئة طول عمره.'),
+Q(4,'m',1,'The Three Rs of sustainable design are:',['Reduce, Reuse, Recycle','Repair, Resell, Replace','Redesign, Reject, Retest','Reduce, Repair, Refund'],0,'Reduce (تكلفة/خامات) ← Reuse (remanufacturing) ← Recycle (استرجاع خامات).'),
+Q(4,'m',2,'Asking “Is the part necessary? Can two parts be combined?” is:',['Value analysis','Life cycle analysis','Design for recycling','Basic research'],0,'Value analysis بتقلل التكلفة و/أو تحسّن الأداء.'),
+Q(4,'m',2,'Dismantling a competitor’s product to find improvements is:',['Reverse engineering','Value analysis','Remanufacturing','Applied research'],0,'Reverse engineering = تفكّك منتج المنافس وتتعلم منه.'),
+Q(4,'m',2,'Research whose objective is commercial application is:',['Basic research','Applied research','Reverse engineering','Life cycle analysis'],1,'Basic = معرفة بس. Applied = تطبيق تجاري. Development = يحوّل النتيجة لمنتج.'),
+Q(4,'m',3,'The capability to produce an item at an acceptable profit is:',['Serviceability','Manufacturability','Sustainability','Liability'],1,'Manufacturability للسلعة. Serviceability للخدمة.'),
+Q(4,'t',1,'Sustainability is mainly about lowering material costs; the environment is secondary.',T,1,'الاستدامة = استخدام الموارد من غير ما نضر النظم البيئية.'),
+Q(4,'t',2,'Only the original manufacturer may remanufacture its used products.',T,1,'ممكن المصنّع الأصلي أو شركة تانية.'),
+Q(4,'t',2,'Remanufactured products can sell for about 50% of the cost of a new product.',T,0,'رقم 50% متكرر في السلايدات، احفظه.'),
+Q(1,'m',1,'Physical items such as raw materials, parts and final products are:',['Goods','Services','Processes','Inputs only'],0,'Goods = ملموسة. Services = أنشطة.'),
+Q(1,'m',1,'Which is NOT one of the three major business functions?',['Marketing','Operations','Finance','Legal'],3,'التلاتة: Marketing, Operations, Finance.'),
+Q(1,'m',1,'Which function assesses consumer wants and needs and promotes the organization’s products?',['Marketing','Operations','Finance','Purchasing'],0,'Marketing = السوق والعملاء.'),
+Q(1,'m',1,'Which function secures financial resources at favorable prices?',['Marketing','Operations','Finance','Design'],2,'Finance = الفلوس.'),
+Q(1,'m',1,'The time between ordering a good or service and receiving it is:',['Lead time','Capacity','Feedback','Variation'],0,'Lead time = من الطلب للاستلام.'),
+Q(1,'t',1,'Goods-producing organizations are not involved in service activities.',T,1,'بيحتاجوا خدمات كتير (تدريب، موارد بشرية، مشتريات).'),
+Q(1,'t',1,'The transformation process is also called the conversion process.',T,0,'Transformation = Conversion = Operations.'),
+Q(1,'m',2,'Physical, schematic and mathematical are types of:',['Models','Strategies','Forecasts','Suppliers'],0,'Physical = مجسم. Schematic = رسم. Mathematical = معادلات.'),
+Q(1,'m',2,'Methods, procedures and equipment used to produce goods are called:',['Process technology','Product technology','Information technology','Service technology'],0,'Process = طريقة الإنتاج. Product = اختراع المنتج. IT = الداتا.'),
+Q(1,'t',2,'A trade-off means giving up one thing in return for something else.',T,0,'مثال: مخزون أكتر = خدمة أحسن لكن تكلفة أعلى.'),
+Q(2,'m',1,'Special abilities that give an organization a competitive edge are:',['Core competencies','Tactics','Goals','Mission statements'],0,'Core competencies = ميزتك التنافسية.'),
+Q(2,'m',1,'A strategy is best described as:',['A plan for achieving organizational goals','The reason for existence','The doing part','A SWOT list'],0,'Strategy = خريطة الطريق للأهداف.'),
+Q(2,'m',2,'Which is NOT a balanced scorecard perspective?',['Finance','Customer','Marketing mix','Learning and growth'],2,'الأربعة: Finance, Customer, Internal business processes, Learning and growth.'),
+Q(2,'m',1,'Productivity is usually expressed as:',['Output ÷ Input','Input ÷ Output','Output − Input','Output × Input'],0,'Productivity = المخرجات ÷ المدخلات.'),
+Q(2,'t',2,'A total productivity measure uses all inputs used.',T,0,'Partial = مدخل واحد. Multifactor = أكتر من واحد. Total = كل المدخلات.'),
+Q(2,'t',2,'A quality-based strategy emphasizes doing things faster; a time-based strategy emphasizes doing things right.',T,1,'معكوسة: Quality = تعمل صح. Time = تعمل أسرع.'),
+Q(2,'m',1,'Which is a reason why organizations fail?',['Neglecting operations strategy','Investing in human resources','Considering customer wants','Strong internal communication'],0,'الأسباب كلها إهمال: إهمال الاستراتيجية، العملاء، التواصل، الاستثمار.'),
+Q(2,'m',1,'Which is an INTERNAL factor?',['Competitors’ prices','Production capacity and technology','Economic conditions','Supplier trends'],1,'Internal = جوا الشركة.'),
+Q(3,'m',1,'A forecast is:',['A statement about the future value of a variable of interest','A record of past sales','A budget','A production schedule'],0,'Forecast = توقع لقيمة مستقبلية.'),
+Q(3,'m',1,'Which is NOT an element of a good forecast?',['Timely','Accurate','In writing','Complex and costly'],3,'الصح: بسيطة ورخيصة (cost-effective) ومفهومة.'),
+Q(3,'m',1,'The first step in the forecasting process is:',['Determine the purpose of the forecast','Select a technique','Make the forecast','Monitor errors'],0,'الأول الغرض ← الأفق الزمني ← البيانات ← الأسلوب ← التوقع ← مراقبة الخطأ.'),
+Q(3,'m',1,'Forecasts based on opinions from surveys, executives and sales staff are:',['Qualitative','Quantitative','Associative','Time-series'],0,'Qualitative = آراء. Quantitative = أرقام.'),
+Q(3,'m',1,'A long-term upward or downward movement in data is:',['Trend','Seasonality','Cycle','Random variation'],0,'Trend = اتجاه طويل المدى.'),
+Q(3,'t',1,'Forecasts for groups of items are more accurate than for individual items.',T,0,'المجموعات أدق.'),
+Q(3,'m',2,'Which accuracy metric weights errors by their squared values?',['MAD','MSE','MAPE','Naive'],1,'MSE = المربعات. MAD = مطلق. MAPE = نسبة مئوية.'),
+Q(3,'m',1,'Forecast error equals:',['Actual − Forecast','Forecast − Actual','Actual + Forecast','Actual ÷ Forecast'],0,'Error = Actual − Forecast.'),
+Q(4,'m',1,'Which is NOT a key question of product design?',['Is there a demand?','Can we do it?','What level of quality is appropriate?','Which competitor should we acquire?'],3,'الأربعة: طلب؟ نقدر؟ جودة؟ جدوى اقتصادية؟'),
+Q(4,'m',2,'Product liability is:',['The manufacturer’s responsibility for injuries or damages caused by a faulty product','A tax','A supplier contract','A quality score'],0,'Product liability = مسؤولية المصنّع عن الضرر.'),
+Q(4,'m',1,'Which is NOT a source of design ideas?',['Supply chain','Competitors','Research','Random guessing'],3,'التلاتة: Supply chain, Competitor, Research.'),
+Q(4,'m',2,'Converting results of applied research into useful commercial applications is:',['Development','Basic research','Reverse engineering','Recycling'],0,'Development بتحوّل نتيجة البحث لمنتج.'),
+Q(4,'m',2,'Design for recycling (DFR) means designing so used products can be:',['Disassembled to recover recyclable parts','Sold at a higher price','Repaired by customers','Shipped faster'],0,'DFR = تفكيك لاسترجاع خامات التدوير.'),
+Q(4,'t',2,'Recycling applies only to manufactured parts, not to materials used during production.',T,1,'بيشمل الاتنين.'),
+Q(4,'t',1,'End-of-life programs aim to keep used products out of landfills.',T,0,'Take-back ← refurbish ← recycle.'),
+Q(4,'m',2,'Companies doing business in the EU must show that:',['A specified proportion of their products is recyclable','All products are free','Prices are fixed','Only new materials are used'],0,'لوائح الاتحاد الأوروبي بتفرض نسبة قابلة للتدوير.'),
+Q(4,'m',2,'Serviceability is the capability to provide a service at an acceptable:',['Cost or profit','Speed only','Size','Color'],0,'Serviceability للخدمة. Manufacturability للسلعة.'),
+Q(4,'t',1,'Economic, social, political, competitive, cost and technological forces can all drive redesign.',T,0,'الستة دول أسباب إعادة التصميم.')
+];
+const R=(a,b,s=1)=>a+s*Math.floor(Math.random()*((b-a)/s+1)),pk=a=>a[Math.random()*a.length|0],r2=v=>Math.round(v*100)/100;
+function MC(c,d,q,ans,dist,h,u=''){const o=[...new Set([ans,...dist])].map(v=>v+u);return Q(c,'c',d,q,o,0,h)}
+for(let n=0;n<3;n++){let q,H,S,Dm;do{q=pk([60,80,100,120,150,200]);H=pk([2,4,5,8]);S=pk([20,25,40,50]);Dm=q*q*H/(2*S)}while(!Number.isInteger(Dm));
+D.push(MC(1,2,`Annual demand ${Dm} units, ordering cost $${S}, holding cost $${H}/unit/year. EOQ?`,q,[q+20,Math.round(q*1.5),Math.round(q/2)],`Q = √(2DS ÷ H) = √(2×${Dm}×${S} ÷ ${H}) = √${2*Dm*S/H} = ${q}`))}
+for(let n=0;n<2;n++){const P=R(60,150,10),U=pk([R(20,50,10),R(170,220,10)]);D.push(MC(1,1,`Production is ${P} parts/day and usage is ${U} parts/day. Inventory buildup per day?`,P-U,[P+U,U-P+1,Math.round(P/U*10)/10],`Buildup = Production − Usage = ${P} − ${U} = ${P-U}${P<U?' (سالب = stockout)':''}`,''))}
+for(let n=0;n<3;n++){const a=R(100,500,10),b=R(100,500,10)+5,c=R(100,500,10)+10;D.push(MC(3,1,`3-period moving average of demand ${a}, ${b}, ${c}?`,r2((a+b+c)/3),[c,r2((b+c)/2),a],`(${a}+${b}+${c}) ÷ 3 = ${r2((a+b+c)/3)}`))}
+for(let n=0;n<3;n++){const a=R(100,500,10),b=R(100,500,10)+5,c=R(100,500,10)+10;D.push(MC(3,2,`Weighted MA: last period ${a} (0.5), 2 periods ago ${b} (0.3), 3 periods ago ${c} (0.2). Forecast?`,r2(.5*a+.3*b+.2*c),[r2((a+b+c)/3),r2(.2*a+.3*b+.5*c),a],`(${a}×0.5)+(${b}×0.3)+(${c}×0.2) = ${r2(.5*a+.3*b+.2*c)}`))}
+for(let n=0;n<3;n++){const F=R(100,500,10),A=F+pk([-60,-40,40,60,80]),al=pk([.2,.3,.4,.5]);D.push(MC(3,2,`Exponential smoothing: previous forecast ${F}, actual ${A}, α = ${al}. New forecast?`,r2(F+al*(A-F)),[A,F,r2(F+al*A)],`F + α(A − F) = ${F} + ${al}×(${A} − ${F}) = ${r2(F+al*(A-F))}`))}
+for(let n=0;n<3;n++){const a=R(100,500,50),b=pk([10,15,20,-10,-20]),t=R(4,10);D.push(MC(3,2,`Linear trend: starts at ${a} (period 0), changes ${b>0?'+':''}${b} per period. Forecast for period ${t}?`,a+b*t,[a+b*(t+1),a-b*t,a+b],`Ft = a + bt = ${a} + (${b}×${t}) = ${a+b*t}`))}
+for(let n=0;n<3;n++){const o=R(10,50),nw=o+pk([-6,-4,-3,3,5,8]);D.push(MC(2,2,`Labor productivity changed from ${o} to ${nw} units/hour. Productivity growth?`,r2((nw-o)/o*100),[r2((nw-o)/nw*100),nw-o,r2(nw/o*100)],`(${nw} − ${o}) ÷ ${o} × 100 = ${r2((nw-o)/o*100)}%`,'%'))}
+const CH={all:'كل الشباتر',1:'Ch 1',2:'Ch 2',3:'Ch 3',4:'Ch 4'},TY={all:'كل الأنواع',m:'اختيار',t:'صح/غلط',c:'مسائل'},DF={all:'كل المستويات',1:'سهل',2:'متوسط',3:'صعب'};
+const app=document.getElementById('app');
+let f={c:'all',t:'all',d:'all'},pool=[],i=0,sc=0,wr=[],done=false;
+const sh=a=>{a=a.slice();for(let k=a.length-1;k>0;k--){const j=Math.random()*(k+1)|0;[a[k],a[j]]=[a[j],a[k]]}return a};
+const sel=()=>D.filter(x=>(f.c=='all'||x.c==f.c)&&(f.t=='all'||x.t==f.t)&&(f.d=='all'||x.d==f.d));
+function chips(key,map){return `<div class="chips">${Object.keys(map).map(k=>`<button class="chip${f[key]==k?' on':''}" data-k="${key}" data-v="${k}">${map[k]}</button>`).join('')}</div>`}
+function home(){const n=sel().length;
+app.innerHTML=`<h1>كويز ريفيجن POM 📘</h1><p class="sub">Production and Operations Management · Ch 1 → 4 · ${D.length} سؤال</p><div class="card"><div class="grp">الشابتر</div>${chips('c',CH)}<div class="grp">نوع السؤال</div>${chips('t',TY)}<div class="grp">المستوى</div>${chips('d',DF)}<button class="go" id="st" ${n?'':'disabled'}>ابدأ (${n} سؤال)</button></div>`;
+app.querySelectorAll('.chip').forEach(b=>b.onclick=()=>{f[b.dataset.k]=b.dataset.v=='all'?'all':+b.dataset.v||b.dataset.v;home()});
+document.getElementById('st').onclick=()=>run(sel())}
+const PG=10;let pg=0,pa=0,pc=0;
+function run(a){pool=sh(a);pg=0;sc=0;wr=[];show()}
+function show(){const s=pool.slice(pg*PG,pg*PG+PG),np=Math.ceil(pool.length/PG),last=pg==np-1;pa=0;pc=s.length;
+app.innerHTML=`<div class="bar"><i style="width:${pg/np*100}%"></i></div><div class="meta"><span>صفحة ${pg+1} من ${np}</span><span id="sc">✅ ${sc}</span></div>${s.map((x,n)=>{let o=x.o.map((t,k)=>({t,k}));if(x.t!='t')o=sh(o);return `<div class="card" style="margin-bottom:14px"><div class="meta"><span>سؤال ${pg*PG+n+1}</span><span>${CH[x.c]} · ${DF[x.d]}</span></div><p class="q">${x.q}</p><div class="${x.t=='t'?'tg':''}">${o.map(p=>`<button class="o" data-n="${n}" data-k="${p.k}">${p.t}</button>`).join('')}</div><div class="fbx"></div></div>`}).join('')}<button class="go" id="nx" disabled>جاوب على الـ ${pc} سؤال الأول</button>`;
+app.querySelectorAll('.o').forEach(b=>b.onclick=()=>pick(b,s[+b.dataset.n],last));window.scrollTo(0,0)}
+function pick(b,x,last){if(b.disabled)return;const card=b.closest('.card'),ok=+b.dataset.k==x.a;sc+=ok;if(!ok)wr.push(x);
+card.querySelectorAll('.o').forEach(e=>{e.disabled=true;if(+e.dataset.k==x.a)e.classList.add('ok')});if(!ok)b.classList.add('no');
+card.querySelector('.fbx').innerHTML=`<div class="fb"><b>${ok?'✅ تمام!':'❌ غلط'}</b>${x.h}</div>`;
+document.getElementById('sc').textContent='✅ '+sc;pa++;
+if(pa==pc){const nx=document.getElementById('nx');nx.disabled=false;nx.textContent=last?'شوف النتيجة':'الصفحة الجاية';nx.onclick=()=>{if(last)end();else{pg++;show()}}}}
+function end(){const p=Math.round(sc/pool.length*100),m=p>=90?'ممتاز، جاهز للامتحان 🔥':p>=70?'كويس، راجع الغلط وخلاص':'محتاج مراجعة تانية، متقلقش 💪';
+app.innerHTML=`<div class="bar"><i style="width:100%"></i></div><div class="card"><div class="big">${p}%</div><p style="text-align:center;margin:0 0 6px">${sc} من ${pool.length} · ${m}</p>${wr.length?`<div class="grp">الأسئلة اللي غلطت فيها</div>${wr.map(x=>`<div class="rv"><p>${x.q}</p><span>✔ ${x.o[x.a]}</span><br>${x.h}</div>`).join('')}`:''}${wr.length?'<button class="go" id="rw">ذاكر الغلط بس</button>':''}<button class="go ghost" id="hm">رجوع للإعدادات</button></div>`;
+if(wr.length)document.getElementById('rw').onclick=()=>run(wr.slice());document.getElementById('hm').onclick=home}
+home();
+</script></body></html>
