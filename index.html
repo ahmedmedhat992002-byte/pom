@@ -155,16 +155,15 @@ function home(){const n=sel().length;
 app.innerHTML=`<h1>كويز ريفيجن POM 📘</h1><p class="sub">Production and Operations Management · Ch 1 → 4 · ${D.length} سؤال</p><div class="card"><div class="grp">الشابتر</div>${chips('c',CH)}<div class="grp">نوع السؤال</div>${chips('t',TY)}<div class="grp">المستوى</div>${chips('d',DF)}<button class="go" id="st" ${n?'':'disabled'}>ابدأ (${n} سؤال)</button></div>`;
 app.querySelectorAll('.chip').forEach(b=>b.onclick=()=>{f[b.dataset.k]=b.dataset.v=='all'?'all':+b.dataset.v||b.dataset.v;home()});
 document.getElementById('st').onclick=()=>run(sel())}
-const PG=10;let pg=0,pa=0,pc=0;
-function run(a){pool=sh(a);pg=0;sc=0;wr=[];show()}
-function show(){const s=pool.slice(pg*PG,pg*PG+PG),np=Math.ceil(pool.length/PG),last=pg==np-1;pa=0;pc=s.length;
-app.innerHTML=`<div class="bar"><i style="width:${pg/np*100}%"></i></div><div class="meta"><span>صفحة ${pg+1} من ${np}</span><span id="sc">✅ ${sc}</span></div>${s.map((x,n)=>{let o=x.o.map((t,k)=>({t,k}));if(x.t!='t')o=sh(o);return `<div class="card" style="margin-bottom:14px"><div class="meta"><span>سؤال ${pg*PG+n+1}</span><span>${CH[x.c]} · ${DF[x.d]}</span></div><p class="q">${x.q}</p><div class="${x.t=='t'?'tg':''}">${o.map(p=>`<button class="o" data-n="${n}" data-k="${p.k}">${p.t}</button>`).join('')}</div><div class="fbx"></div></div>`}).join('')}<button class="go" id="nx" disabled>جاوب على الـ ${pc} سؤال الأول</button>`;
-app.querySelectorAll('.o').forEach(b=>b.onclick=()=>pick(b,s[+b.dataset.n],last));window.scrollTo(0,0)}
-function pick(b,x,last){if(b.disabled)return;const card=b.closest('.card'),ok=+b.dataset.k==x.a;sc+=ok;if(!ok)wr.push(x);
-card.querySelectorAll('.o').forEach(e=>{e.disabled=true;if(+e.dataset.k==x.a)e.classList.add('ok')});if(!ok)b.classList.add('no');
-card.querySelector('.fbx').innerHTML=`<div class="fb"><b>${ok?'✅ تمام!':'❌ غلط'}</b>${x.h}</div>`;
-document.getElementById('sc').textContent='✅ '+sc;pa++;
-if(pa==pc){const nx=document.getElementById('nx');nx.disabled=false;nx.textContent=last?'شوف النتيجة':'الصفحة الجاية';nx.onclick=()=>{if(last)end();else{pg++;show()}}}}
+const PG=10;let pg=0,ans={},ord={};
+function run(a){pool=sh(a);pg=0;ans={};ord={};pool.forEach((x,n)=>{const o=x.o.map((t,k)=>k);ord[n]=x.t=='t'?o:sh(o)});show()}
+function nav(){const np=Math.ceil(pool.length/PG);return `<div class="chips" style="margin:10px 0">${Array.from({length:np},(_,p)=>{const full=pool.slice(p*PG,p*PG+PG).every((_,n)=>ans[p*PG+n]!==undefined);return `<button class="chip${p==pg?' on':''}" data-p="${p}">${p+1}${full?' ✓':''}</button>`}).join('')}</div>`}
+function show(keep){const y=window.scrollY,np=Math.ceil(pool.length/PG),s=pool.slice(pg*PG,pg*PG+PG),n0=pg*PG,dn=Object.keys(ans).length;
+app.innerHTML=`<div class="bar"><i style="width:${dn/pool.length*100}%"></i></div><div class="meta"><span>صفحة ${pg+1} من ${np}</span><span>جاوبت ${dn} / ${pool.length}</span></div>${nav()}${s.map((x,n)=>{const g=n0+n,a=ans[g];return `<div class="card" style="margin-bottom:14px"><div class="meta"><span>سؤال ${g+1}</span><span>${CH[x.c]} · ${DF[x.d]}</span></div><p class="q">${x.q}</p><div class="${x.t=='t'?'tg':''}">${ord[g].map(k=>`<button class="o${a===undefined?'':k==x.a?' ok':k==a?' no':''}" ${a===undefined?'':'disabled'} data-g="${g}" data-k="${k}">${x.o[k]}</button>`).join('')}</div>${a===undefined?'':`<div class="fb"><b>${a==x.a?'✅ تمام!':'❌ غلط'}</b>${x.h}</div>`}</div>`}).join('')}${nav()}<button class="go" id="fin">إنهاء وشوف النتيجة</button>`;
+app.querySelectorAll('.o').forEach(b=>b.onclick=()=>{ans[+b.dataset.g]=+b.dataset.k;show(1)});
+app.querySelectorAll('.chip[data-p]').forEach(b=>b.onclick=()=>{pg=+b.dataset.p;show()});
+document.getElementById('fin').onclick=()=>{sc=0;wr=[];pool.forEach((x,n)=>{if(ans[n]==x.a)sc++;else wr.push(x)});end()};
+window.scrollTo(0,keep?y:0)}
 function end(){const p=Math.round(sc/pool.length*100),m=p>=90?'ممتاز، جاهز للامتحان 🔥':p>=70?'كويس، راجع الغلط وخلاص':'محتاج مراجعة تانية، متقلقش 💪';
 app.innerHTML=`<div class="bar"><i style="width:100%"></i></div><div class="card"><div class="big">${p}%</div><p style="text-align:center;margin:0 0 6px">${sc} من ${pool.length} · ${m}</p>${wr.length?`<div class="grp">الأسئلة اللي غلطت فيها</div>${wr.map(x=>`<div class="rv"><p>${x.q}</p><span>✔ ${x.o[x.a]}</span><br>${x.h}</div>`).join('')}`:''}${wr.length?'<button class="go" id="rw">ذاكر الغلط بس</button>':''}<button class="go ghost" id="hm">رجوع للإعدادات</button></div>`;
 if(wr.length)document.getElementById('rw').onclick=()=>run(wr.slice());document.getElementById('hm').onclick=home}
